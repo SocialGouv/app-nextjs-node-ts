@@ -15,8 +15,7 @@ Ajout du fichier `package.json` dans le repertoire `app-nextjs-node-ts`
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
     "lint": "lerna run lint --parallel",
-    "start": "lerna run start --parallel",
-    "test": "lerna run test --parallel"
+    "start": "lerna run start --parallel"
   },
   "devDependencies": {
     "lerna": "^3.13.0"
@@ -36,6 +35,7 @@ Initialisation du projet avec `yarn`
 
 yarn install
 ```
+
 Initialisation de `lerna`
 
 ```shell
@@ -275,6 +275,7 @@ Ajout du fichier `.gitignore` dans le repertoire `app-nextjs-node-ts`
 ```gitignore
 node_modules
 .DS_Store
+yarn-error.log
 ```
 
 Ajout du fichier `.editorconfig` dans le repertoire `app-nextjs-node-ts`
@@ -302,19 +303,19 @@ trim_trailing_whitespace = false
 
 ### Création de l'application nextjs
 
-Création du répertoire de l'application `client`
+Création du répertoire de l'application `app`
 
 ```shell
 # executer dans app-nextjs-node-ts
 
-cd packages && mkdir client && cd "$_"
+cd packages && mkdir app && cd "$_"
 ```
 
-Création du fichier `package.json` dans le repertoire `app-nextjs-node-ts/packages/client`
+Création du fichier `package.json` dans le repertoire `app-nextjs-node-ts/packages/app`
 
 ```json
 {
-  "name": "client",
+  "name": "app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Incubateur des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
@@ -324,10 +325,10 @@ Création du fichier `package.json` dans le repertoire `app-nextjs-node-ts/packa
 
 ```
 
-Ajout de fichier `LICENSE` dans le repertoire `app-nextjs-node-ts/packages/client`
+Ajout de fichier `LICENSE` dans le repertoire `app-nextjs-node-ts/packages/app`
 
 ```shell
-# executer dans app-nextjs-node-ts/packages/client
+# executer dans app-nextjs-node-ts/packages/app
 
 cp ../../LICENSE .
 ```
@@ -335,20 +336,20 @@ cp ../../LICENSE .
 Ajout des dépendances de `react`, `react-dom` et `nextjs`
 
 ```shell
-# executer dans app-nextjs-node-ts/packages/client
+# executer dans app-nextjs-node-ts/packages/app
 
 yarn add react react-dom next
 ```
 
-Création du repertoire `pages` dans `app-nextjs-node-ts/packages/client`
+Création du repertoire `pages` dans `app-nextjs-node-ts/packages/app`
 
 ```shell
-# executer dans app-nextjs-node-ts/packages/client
+# executer dans app-nextjs-node-ts/packages/app
 
 mkdir pages && cd "$_"
 ```
 
-Création du fichier `index.js` dans `app-nextjs-node-ts/packages/client/pages`
+Création du fichier `index.js` dans `app-nextjs-node-ts/packages/app/pages`
 
 ```javascript
 function Home() {
@@ -359,11 +360,11 @@ export default Home
 
 ```
 
-Modification de fichier `package.json` dans `app-nextjs-node-ts/packages/client` (ajout des scripts)
+Modification de fichier `package.json` dans `app-nextjs-node-ts/packages/app` (ajout des scripts)
 
 ```json
 {
-  "name": "client",
+  "name": "@socialgouv/app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Incubateur des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
@@ -387,15 +388,17 @@ Vérification de l'accessibilité de l'application next
 ```shell
 # executer dans app-nextjs-node-ts
 
-yarn workspace client dev
+yarn workspace @socialgouv/app dev
 
 # http://localhost:3000 doit être accessible
 ```
 
-Ajout du fichier `.gitignore` dans `app-nextjs-node-ts/packages/client`
+Ajout du fichier `.gitignore` dans `app-nextjs-node-ts/packages/app`
 
 ```gitignore
 .next
+.node_modules
+yarn-error.log
 ```
 
 ### Configuration de typescript avec nextjs
@@ -403,10 +406,10 @@ Ajout du fichier `.gitignore` dans `app-nextjs-node-ts/packages/client`
 ```shell
 # executer dans app-nextjs-node-ts
 
-yarn workspace client add -D @zeit/next-typescript typescript tslint @types/next @types/react
+yarn workspace @socialgouv/app add -D @zeit/next-typescript typescript tslint @types/next @types/react
 ```
 
-Ajout du fichier `tsconfig.json` dans `app-nextjs-node-ts/packages/client`
+Ajout du fichier `tsconfig.json` dans `app-nextjs-node-ts/packages/app`
 
 ```json
 {
@@ -430,7 +433,7 @@ Ajout du fichier `tsconfig.json` dans `app-nextjs-node-ts/packages/client`
 }
 ```
 
-Ajout du fichier `next.config.js` dans `app-nextjs-node-ts/packages/client`
+Ajout du fichier `next.config.js` dans `app-nextjs-node-ts/packages/app`
 
 ```javascript
 // next.config.js
@@ -438,10 +441,10 @@ const withTypescript = require('@zeit/next-typescript');
 module.exports = withTypescript();
 ```
 
-Modifier l'extension' du fichier `index.js` dans `app-nextjs-node-ts/packages/client/pages`
+Modifier l'extension' du fichier `index.js` dans `app-nextjs-node-ts/packages/app/pages`
 
 ```shell
-mv ./packages/client/pages/index.js ./packages/client/pages/index.tsx
+mv ./packages/app/pages/index.js ./packages/app/pages/index.tsx
 ```
 
 Relancer l'application
@@ -449,7 +452,7 @@ Relancer l'application
 ```shell
 # executer dans app-nextjs-node-ts
 
-yarn workspace client dev
+yarn workspace @socialgouv/app dev
 
 # http://localhost:3000 doit être accessible
 ```
@@ -457,12 +460,12 @@ yarn workspace client dev
 ### Configuration de tslint
 
 ```shell
-# executer dans app-nextjs-node-ts/packages/client
+# executer dans app-nextjs-node-ts/packages/app
 
 yarn add -D @socialgouv/tslint-config-recommended tslint prettier
 ```
 
-Ajout du fichier `tslint.js`dans `app-nextjs-node-ts/packages/client/`
+Ajout du fichier `tslint.js`dans `app-nextjs-node-ts/packages/app/`
 
 ```json
 {
@@ -471,11 +474,11 @@ Ajout du fichier `tslint.js`dans `app-nextjs-node-ts/packages/client/`
 
 ```
 
-Ajout du script `lint` dans le fichier `app-nextjs-node-ts/packages/client/package.json`
+Ajout du script `lint` dans le fichier `app-nextjs-node-ts/packages/app/package.json`
 
 ```json
 {
-  "name": "client",
+  "name": "@socialgouv/app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Incubateur des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
@@ -501,4 +504,146 @@ Ajout du script `lint` dans le fichier `app-nextjs-node-ts/packages/client/packa
   }
 }
 
+```
+
+### Configuration de Jest avec Typescript
+
+><https://jestjs.io/docs/en/getting-started#using-typescript>
+
+Ajout de la dépendance `jest`
+
+```shell
+yarn workspace @socialgouv/app add --dev jest
+```
+
+Ajout des dépendances pour `babel`
+
+```shell
+yarn workspace @socialgouv/app add --dev babel-jest @babel/core @babel/preset-env @babel/preset-typescript
+```
+
+ajout du fichier `babel.config.js` dans `app-nextjs-node-ts/packages/app/`
+
+```javascript
+module.exports = {
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-typescript',
+  ],
+};
+```
+
+Ajout de la dépendance `@types/jest`
+
+```shell
+yarn workspace @socialgouv/app add --dev @types/jest
+```
+
+Ajout de la configuration `jest`
+
+><https://jestjs.io/docs/en/configuration>
+
+```javascript
+// jest.config.js
+
+module.exports = {
+  verbose: true
+};
+```
+
+Ajout du script de test dans `app-nextjs-node-ts/packages/app/package.json`
+
+```json
+{
+// ...
+"scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tslint -p tsconfig.json -t stylish",
+    "test": "jest ./test" // <=== SCRIPT A AJOUTER
+  }
+}
+// ...
+```
+
+Ajout du script de test node dans `app-nextjs-node-ts/package.json`
+
+```json
+{
+  // ...
+  "scripts": {
+    "build": "lerna run build",
+    "dev": "lerna run dev --parallel",
+    "lint": "lerna run lint --parallel",
+    "start": "lerna run start --parallel",
+    "test": "lerna run test --parallel" // <=== SCRIPT A AJOUTER
+  },
+  // ...
+}
+```
+
+### Vérification du bon fonctionnement de `jest` avec `typescript`
+
+Création d'un repertoire `src` à la racine de `app`
+
+Ajout d'un fichier `sum.js` et `sum.ts`
+
+```javascript
+// sum.js
+function sum(a, b) {
+    return a + b;
+  }
+  
+module.exports = sum;
+```
+
+```javascript
+// sum.ts
+function sum(a: number, b: number): number {
+    return a + b;
+  }
+  
+  export default sum;
+```
+
+Création d'un repertoire `test` à la racine de `app`
+
+```shell
+mkdir packages/app/test
+```
+
+Dans ce repertoire ajout des tests `sum.test.js` et `sum.test.ts`
+
+```javascript
+// sum.test.js
+it('adds 1 + 2 to equal 3 in Typescript', () => {
+    const sum = require('../src/sum.ts').default;
+    expect(sum(1, 2)).toBe(3);
+  });
+  
+  it('adds 1 + 2 to equal 3 in JavaScript', () => {
+    const sum = require('../src/sum.js');
+    expect(sum(1, 2)).toBe(3);
+  });
+  ```
+
+```javascript
+// sum.test.jts
+
+it('adds 1 + 2 to equal 3 in TScript', () => {
+  const sum = require('../src/sum.ts').default;
+  expect(sum(1, 2)).toBe(3);
+});
+
+it('adds 1 + 2 to equal 3 in JavaScript', () => {
+  const sum = require('../src/sum.js');
+  expect(sum(1, 2)).toBe(3);
+});
+```
+
+Vérification des tests
+
+```shell
+yarn test
 ```
