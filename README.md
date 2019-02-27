@@ -275,6 +275,10 @@ Ajout du fichier `.gitignore` dans le repertoire `app-nextjs-node-ts`
 ```gitignore
 node_modules
 .DS_Store
+.idea
+.next
+.vscode
+.env
 yarn-error.log
 ```
 
@@ -315,7 +319,7 @@ Création du fichier `package.json` dans le repertoire `app-nextjs-node-ts/packa
 
 ```json
 {
-  "name": "app",
+  "name": "@socialgouv/app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Incubateur des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
@@ -332,6 +336,8 @@ Ajout de fichier `LICENSE` dans le repertoire `app-nextjs-node-ts/packages/app`
 
 cp ../../LICENSE .
 ```
+
+><https://nextjs.org/learn/basics/getting-started>
 
 Ajout des dépendances de `react`, `react-dom` et `nextjs`
 
@@ -585,9 +591,13 @@ Ajout du script de test node dans `app-nextjs-node-ts/package.json`
 
 ### Vérification du bon fonctionnement de `jest` avec `typescript`
 
-Création d'un repertoire `src` à la racine de `app`
+Création d'un repertoire `src` et des fichiers `src/sum.js`, `src/sum.ts`  à la racine de `app`
 
-Ajout d'un fichier `sum.js` et `sum.ts`
+```shell
+mkdir src && cd "$_"
+touch sum.js
+touch sum.ts
+```
 
 ```javascript
 // sum.js
@@ -607,13 +617,13 @@ function sum(a: number, b: number): number {
   export default sum;
 ```
 
-Création d'un repertoire `test` à la racine de `app`
+Création d'un repertoire `test` et des fichiers `test/sum.test.js`, `test/sum.test.ts` à la racine de `app`
 
 ```shell
-mkdir packages/app/test
+mkdir test && cd "$_"
+touch sum.test.js
+touch sum.test.ts
 ```
-
-Dans ce repertoire ajout des tests `sum.test.js` et `sum.test.ts`
 
 ```javascript
 // sum.test.js
@@ -645,5 +655,6 @@ it('adds 1 + 2 to equal 3 in JavaScript', () => {
 Vérification des tests
 
 ```shell
+# executer dans app-nextjs-node-ts
 yarn test
 ```
