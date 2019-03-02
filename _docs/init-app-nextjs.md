@@ -51,33 +51,25 @@ Création du fichier `index.js` dans `app-nextjs-node-ts/packages/app/pages`
 
 ```javascript
 function Home() {
-  return <div>Welcome app-nextjs-node-ts!</div>
+  return <div>Social Gouv!</div>
 }
 
 export default Home
-
 ```
 
 Modification de fichier `package.json` dans `app-nextjs-node-ts/packages/app` (ajout des scripts)
 
 ```json
 {
-  "name": "@socialgouv/app",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Incubateur des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
-  "license": "Apache-2.0",
+  // ...
   "private": true,
-  "scripts": {
+  "scripts": { // <----- AJOUT DES SRIPTS
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "^8.0.1",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2"
-  }
+    // ...
 }
 ```
 
