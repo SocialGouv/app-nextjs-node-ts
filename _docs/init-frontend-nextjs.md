@@ -73,6 +73,14 @@ Modification de fichier `package.json` dans `app-nextjs-node-ts/packages/app` (a
 }
 ```
 
+Ajout du fichier `.gitignore` dans `app-nextjs-node-ts/packages/app`
+
+```gitignore
+.next
+.node_modules
+yarn-error.log
+```
+
 Vérification de l'accessibilité de l'application next
 
 ```shell
@@ -81,12 +89,4 @@ Vérification de l'accessibilité de l'application next
 yarn workspace @socialgouv/app dev
 
 # http://localhost:3000 doit être accessible
-```
-
-Ajout du fichier `.gitignore` dans `app-nextjs-node-ts/packages/app`
-
-```gitignore
-.next
-.node_modules
-yarn-error.log
 ```

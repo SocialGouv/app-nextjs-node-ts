@@ -12,7 +12,7 @@ class ClairetteOrigin extends React.Component<void, ClairetteOriginState> {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  render() {
+  public render() {
     return (
       <div>
         <label>Dans quel département est produite la Clairette de Die</label>
@@ -33,7 +33,7 @@ class ClairetteOrigin extends React.Component<void, ClairetteOriginState> {
     );
   }
 
-  handleChange(event: any) {
+  private handleChange(event: any) {
     this.setState({origin: event.target.value});
   }
 
