@@ -1,5 +1,9 @@
+import ClairetteOrigin from './ClairetteOrigin';
+
 function Home() {
-  return <div>Social Gouv!</div>
+  return (
+    <ClairetteOrigin></ClairetteOrigin>
+  )
 }
 
 export default Home

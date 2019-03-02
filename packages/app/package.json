@@ -8,11 +8,26 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "tslint -p tsconfig.json -t stylish",
+    "test": "jest ./_tests_"
   },
   "dependencies": {
     "next": "^8.0.3",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@socialgouv/tslint-config-recommended": "^0.5.1",
+    "@types/jest": "^24.0.9",
+    "@types/next": "^8.0.1",
+    "@types/react": "^16.8.6",
+    "@zeit/next-typescript": "^1.1.1",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "prettier": "^1.16.4",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
   }
 }
