@@ -567,7 +567,7 @@ Ajout du script de test dans `app-nextjs-node-ts/packages/app/package.json`
     "build": "next build",
     "start": "next start",
     "lint": "tslint -p tsconfig.json -t stylish",
-    "test": "jest ./test" // <=== SCRIPT A AJOUTER
+    "test": "jest ./_tests_" // <=== SCRIPT A AJOUTER
   }
 }
 // ...
@@ -620,7 +620,7 @@ function sum(a: number, b: number): number {
 Création d'un repertoire `test` et des fichiers `test/sum.test.js`, `test/sum.test.ts` à la racine de `app`
 
 ```shell
-mkdir test && cd "$_"
+mkdir _tests_ && cd "$_"
 touch sum.test.js
 touch sum.test.ts
 ```
