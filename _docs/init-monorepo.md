@@ -1,4 +1,70 @@
-  Apache License
+# Initialisation du projet en monorepo
+
+```shell
+mkdir app-nextjs-node-ts && cd "$_"
+```
+
+Ajout du fichier `package.json` dans le repertoire `app-nextjs-node-ts`
+
+```json
+{
+  "private": true,
+  "scripts": {
+    "build": "lerna run build",
+    "dev": "lerna run dev --parallel",
+    "lint": "lerna run lint --parallel",
+    "start": "lerna run start --parallel"
+  },
+  "devDependencies": {
+    "lerna": "^3.13.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "name": "app-nextjs-node-ts"
+}
+```
+
+Initialisation du projet avec `yarn`
+
+```shell
+# executer dans app-nextjs-node-ts
+
+yarn install
+```
+
+Initialisation de `lerna`
+
+```shell
+# executer dans app-nextjs-node-ts
+
+yarn lerna init
+```
+
+Modification de fichier `lerna.json` dans le repertoire `app-nextjs-node-ts`
+
+```json
+{
+  "command": {
+    "publish": {
+      "skip-npm": true,
+      "conventionalCommits": true,
+      "message": "chore(release): version %v"
+    }
+  },
+  "npmClient": "yarn",
+  "packages": [
+    "packages/*"
+  ],
+  "useWorkspaces": true,
+  "version": "0.0.2"
+}
+```
+
+Ajout du fichier `LICENSE` dans le repertoire `app-nextjs-node-ts`
+
+```text
+                                 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -199,3 +265,34 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+```
+
+Ajout du fichier `.gitignore` dans le repertoire `app-nextjs-node-ts`
+
+```gitignore
+node_modules
+.DS_Store
+.idea
+.next
+.vscode
+.env
+yarn-error.log
+```
+
+Ajout du fichier `.editorconfig` dans le repertoire `app-nextjs-node-ts`
+
+```json
+# Editor configuration, see http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+```
