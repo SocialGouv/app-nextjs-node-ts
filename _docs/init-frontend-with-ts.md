@@ -44,7 +44,7 @@ ajout du fichier `babel.config.js` dans `app-nextjs-node-ts/packages/app/`
 module.exports = {
   "presets": [
     "next/babel",
-    "@babel/preset-typescript",
+    "@zeit/next-typescript/babel"
   ],
 };
 ```
