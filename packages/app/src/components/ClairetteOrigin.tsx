@@ -16,7 +16,7 @@ class ClairetteOrigin extends React.Component<void, ClairetteOriginState> {
     return (
       <div>
         <label>Dans quel département est produite la Clairette de Die</label>
-        <select value={this.state.city} onChange={this.handleChange}>
+        <select value={this.state.origin} onChange={this.handleChange}>
           <option value=""></option>
           <option value="drome">Drôme</option>
           <option value="cotedor">Cote d'or</option>

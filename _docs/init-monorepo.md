@@ -41,7 +41,7 @@ Initialisation de `lerna`
 yarn lerna init
 ```
 
-Modification de fichier `lerna.json` dans le repertoire `app-nextjs-node-ts`
+Modification du fichier `lerna.json` dans le repertoire `app-nextjs-node-ts`
 
 ```json
 {

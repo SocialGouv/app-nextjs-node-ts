@@ -51,7 +51,7 @@ module.exports = {
 
 Nous allons maintenant, tester le bon fonctionnent de NextJS en typescript.
 
-Ajout de fichier `ClairetteOrigin.tsx` au même niveau que `index.js`
+Ajout de fichier `ClairetteOrigin.tsx` au même niveau dans `app-nextjs-node-ts/packages/app/src/components`
 
 ```typescript
 import * as React from 'react';
@@ -72,7 +72,7 @@ class ClairetteOrigin extends React.Component<void, ClairetteOriginState> {
     return (
       <div>
         <label>Dans quel département est produite la Clairette de Die</label>
-        <select value={this.state.city} onChange={this.handleChange}>
+        <select value={this.state.origin} onChange={this.handleChange}>
           <option value=""></option>
           <option value="drome">Drôme</option>
           <option value="cotedor">Cote d'or</option>
@@ -101,7 +101,7 @@ export default ClairetteOrigin;
 Modification du fichier `index.js`
 
 ```javascript
-import ClairetteOrigin from './ClairetteOrigin';
+import ClairetteOrigin from '../src/components/ClairetteOrigin';
 
 function Home() {
   return (

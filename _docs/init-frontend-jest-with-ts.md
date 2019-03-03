@@ -2,22 +2,10 @@
 
 ><https://jestjs.io/docs/en/getting-started#using-typescript>
 
-Ajout de la dépendance `jest`
+Ajout de la dépendance `jest`, `babel-jest` et `@types/jest`
 
 ```shell
-yarn workspace @socialgouv/app add --dev jest
-```
-
-Ajout des dépendances pour `babel`
-
-```shell
-yarn workspace @socialgouv/app add --dev babel-jest
-```
-
-Ajout de la dépendance `@types/jest`
-
-```shell
-yarn workspace @socialgouv/app add --dev @types/jest
+yarn workspace @socialgouv/app add --dev jest babel-jest @types/jest
 ```
 
 Configuration de `jest`, ajout du fichier `jest.config.js`
@@ -25,11 +13,18 @@ Configuration de `jest`, ajout du fichier `jest.config.js`
 ><https://jestjs.io/docs/en/configuration>
 
 ```javascript
-// jest.config.js
+const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$'
 
 module.exports = {
-  verbose: true
-};
+  collectCoverage: true,
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  // setupFiles: ['<rootDir>/jest.setup.js'],
+  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testRegex: TEST_REGEX,
+  transform: {
+    '^.+\\.tsx?$': 'babel-jest'
+  },
+}
 ```
 
 Ajout du script de test dans `app-nextjs-node-ts/packages/app/package.json`
@@ -42,7 +37,7 @@ Ajout du script de test dans `app-nextjs-node-ts/packages/app/package.json`
     "build": "next build",
     "start": "next start",
     "lint": "tslint -p tsconfig.json -t stylish",
-    "test": "jest ./_tests_" // <=== SCRIPT A AJOUTER
+    "test": "jest" // <=== SCRIPT A AJOUTER
   }
 }
 // ...
@@ -66,10 +61,10 @@ Ajout du script de test node dans `app-nextjs-node-ts/package.json`
 
 ## Vérification du bon fonctionnement de `jest` avec `typescript`
 
-Création d'un repertoire `src` et des fichiers `src/sum.js`, `src/sum.ts`  à la racine de `app`
+Création des fichiers `src/utils/sum.js`, `src/utils/sum.ts`  à la racine de `app`
 
 ```shell
-mkdir src && cd "$_"
+mkdir -p src/utils && cd "$_"
 touch sum.js
 touch sum.ts
 ```
@@ -92,10 +87,10 @@ function sum(a: number, b: number): number {
   export default sum;
 ```
 
-Création d'un repertoire `test` et des fichiers `test/sum.test.js`, `test/sum.test.ts` à la racine de `app`
+Création des fichiers `src/utils/_tests_/sum.test.js`, `src/utils/_tests_/sum.test.ts` à la racine de `app`
 
 ```shell
-mkdir _tests_ && cd "$_"
+mkdir -p src/utils/_tests_ && cd "$_"
 touch sum.test.js
 touch sum.test.ts
 ```
@@ -103,26 +98,25 @@ touch sum.test.ts
 ```javascript
 // sum.test.js
 it('adds 1 + 2 to equal 3 in Typescript', () => {
-    const sum = require('../src/sum.ts').default;
+    const sum = require('../sum.ts').default;
     expect(sum(1, 2)).toBe(3);
   });
   
   it('adds 1 + 2 to equal 3 in JavaScript', () => {
-    const sum = require('../src/sum.js');
+    const sum = require('../sum.js');
     expect(sum(1, 2)).toBe(3);
   });
   ```
 
 ```javascript
 // sum.test.ts
-
 it('adds 1 + 2 to equal 3 in TScript', () => {
-  const sum = require('../src/sum.ts').default;
+  const sum = require('../sum.ts').default;
   expect(sum(1, 2)).toBe(3);
 });
 
 it('adds 1 + 2 to equal 3 in JavaScript', () => {
-  const sum = require('../src/sum.js');
+  const sum = require('../sum.js');
   expect(sum(1, 2)).toBe(3);
 });
 ```

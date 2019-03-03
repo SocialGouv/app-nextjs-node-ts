@@ -1,4 +1,4 @@
-import ClairetteOrigin from './ClairetteOrigin';
+import ClairetteOrigin from '../src/components/ClairetteOrigin';
 
 function Home() {
   return (

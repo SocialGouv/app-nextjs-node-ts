@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "tslint -p tsconfig.json -t stylish",
-    "test": "jest ./_tests_"
+    "test": "jest"
   },
   "dependencies": {
     "next": "^8.0.3",
