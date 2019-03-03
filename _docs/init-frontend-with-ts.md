@@ -3,7 +3,7 @@
 ```shell
 # executer dans app-nextjs-node-ts
 
-yarn workspace @socialgouv/app add -D @zeit/next-typescript typescript tslint @types/next @types/react
+yarn workspace @socialgouv/app add -D @zeit/next-typescript typescript @types/next @types/react @types/react-dom
 ```
 
 Configuration de typescript, ajout du fichier `tsconfig.json` dans `app-nextjs-node-ts/packages/app`

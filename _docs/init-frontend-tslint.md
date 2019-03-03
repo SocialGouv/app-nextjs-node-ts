@@ -1,8 +1,6 @@
 # Configuration de tslint
 
 ```shell
-# executer dans app-nextjs-node-ts/packages/app
-
 yarn workspace @socialgouv/app add -D @socialgouv/tslint-config-recommended tslint prettier
 ```
 
