@@ -1,3 +1,25 @@
+<p align=center>
+:skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull:</p> 
+<br>
+<h3 align=center>
+<a href=https://github.com/SocialGouv/sample-next-app/>Migrated to SocialGouv/sample-next-app</a></h3>
+<br>
+<br><p align=center>
+:skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull:
+</p> 
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+<br>
+<br>
+<br>
+<br>
+
 # Sommaire
 
 Ce projet est destiné aux développeurs de l'incubateur des ministères sociaux.
